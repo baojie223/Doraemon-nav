@@ -28,7 +28,9 @@ function AppRouter() {
     //     <Route path="/users/" component={Users} />
     //   </div>
     // </Router>
-    <MySearch></MySearch>
+    <div style={{ width: '100vw', overflowX: 'hidden' }}>
+      <MySearch></MySearch>
+    </div>
   )
 }
 

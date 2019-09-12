@@ -1,15 +1,5 @@
 import React, { Fragment } from 'react'
-import {
-  Input,
-  Row,
-  Col,
-  Button,
-  Icon,
-  Menu,
-  Select,
-  List,
-  Typography
-} from 'antd'
+import { Input, Row, Col, Button, Icon, Select, List } from 'antd'
 const { Option } = Select
 
 const IconFont = Icon.createFromIconfontCN({
@@ -39,40 +29,6 @@ const searchMap = {
     icon: <IconFont type="icon-fanyi"></IconFont>
   }
 }
-
-const menu = (
-  <Menu>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.alipay.com/"
-      >
-        1st menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="http://www.taobao.com/"
-      >
-        2nd menu item
-      </a>
-    </Menu.Item>
-    <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer" href="http://www.tmall.com/">
-        3rd menu item
-      </a>
-    </Menu.Item>
-  </Menu>
-)
-
-let options = ''
-
-// options = searchMap.map(item => {
-//   return
-// })
 
 const common = [
   <a
@@ -199,15 +155,7 @@ class MySearch extends React.Component {
   }
 
   onSearch(e) {
-    // console.log(e.target.value)
-    // const id = e.target.value
-    // setTimeout(() => {
-    //   // const id = e.target.value
-    //   const btn = document.getElementById(id)
-    //   console.log(btn)
-    //   // document.getElementById(id).click()
-    //   btn.click()
-    // }, 0)
+    window.open(searchMap[this.state.site].url + e.target.value)
   }
 }
 
