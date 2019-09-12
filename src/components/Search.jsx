@@ -12,6 +12,10 @@ import {
 } from 'antd'
 const { Option } = Select
 
+const IconFont = Icon.createFromIconfontCN({
+  scriptUrl: '//at.alicdn.com/t/font_1410407_q6zo4fe35y.js'
+})
+
 const searchMap = {
   google: {
     url: 'https://www.google.com/search?q=',
@@ -28,6 +32,11 @@ const searchMap = {
   juejin: {
     url: 'https://juejin.im/search?query=',
     icon: <Icon type="gold" />
+  },
+  googleTranslate: {
+    url:
+      'https://translate.google.com/?source=gtx_c#view=home&op=translate&sl=zh-CN&tl=en&text=',
+    icon: <IconFont type="icon-fanyi"></IconFont>
   }
 }
 
@@ -65,7 +74,7 @@ let options = ''
 //   return
 // })
 
-const data = [
+const common = [
   <a
     href="https://github.com/baojie223"
     target="_blank"
@@ -73,15 +82,27 @@ const data = [
   >
     我的github仓库
   </a>,
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-  'Los Angeles battles huge wildfires.'
+  <a
+    href="https://ant.design/docs/react/introduce-cn"
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    Ant Design
+  </a>
 ]
 
-const IconFont = Icon.createFromIconfontCN({
-  scriptUrl: '//at.alicdn.com/t/font_1410407_zg0ls4yrvb.js'
-})
+const develop = [
+  <a href="http://localhost:4200" target="_blank" rel="noopener noreferrer">
+    4200端口-云平台
+  </a>,
+  <a href="http://localhost:8080" target="_blank" rel="noopener noreferrer">
+    8080端口-my-vue
+  </a>,
+  <a href="http://localhost:8001" target="_blank" rel="noopener noreferrer">
+    8001端口-牧野
+  </a>
+]
+
 class MySearch extends React.Component {
   constructor(props) {
     super(props)
@@ -114,12 +135,8 @@ class MySearch extends React.Component {
             <List
               header={<div style={{ textAlign: 'center' }}>常用的网站</div>}
               bordered
-              dataSource={data}
-              renderItem={item => (
-                <List.Item>
-                  {item}
-                </List.Item>
-              )}
+              dataSource={common}
+              renderItem={item => <List.Item>{item}</List.Item>}
             />
           </Col>
           <Col span={8} style={{ textAlign: 'center' }}>
@@ -127,15 +144,10 @@ class MySearch extends React.Component {
           </Col>
           <Col span={6}>
             <List
-              header={<div>Header</div>}
-              footer={<div>Footer</div>}
+              header={<div style={{ textAlign: 'center' }}>开发端口</div>}
               bordered
-              dataSource={data}
-              renderItem={item => (
-                <List.Item>
-                  <Typography.Text mark>[ITEM]</Typography.Text> {item}
-                </List.Item>
-              )}
+              dataSource={develop}
+              renderItem={item => <List.Item>{item}</List.Item>}
             />
           </Col>
         </Row>
@@ -151,10 +163,13 @@ class MySearch extends React.Component {
               defaultValue={this.state.site}
               onChange={this.handleChange.bind(this)}
             >
-              <Option value="google">{searchMap['google'].icon }谷歌</Option>
-              <Option value="baidu">{searchMap['baidu'].icon}百度</Option>
-              <Option value="github">{searchMap['github'].icon}github</Option>
-              <Option value="juejin">{searchMap['juejin'].icon}掘金</Option>
+              <Option value="google">{searchMap['google'].icon}</Option>
+              <Option value="baidu">{searchMap['baidu'].icon}</Option>
+              <Option value="github">{searchMap['github'].icon}</Option>
+              <Option value="juejin">{searchMap['juejin'].icon}</Option>
+              <Option value="googleTranslate">
+                {searchMap['googleTranslate'].icon}
+              </Option>
             </Select>
           </Col>
           <Col span={8}>
