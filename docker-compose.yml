@@ -1,0 +1,8 @@
+version: "3.7"
+services:
+    dora:
+        container_name: dora
+        image: baojiedashuaibi/dora:latest
+        ports:
+            - "8082:80"
+        restart: on-failure

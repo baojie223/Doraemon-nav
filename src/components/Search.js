@@ -130,7 +130,7 @@ class MySearch extends React.Component {
           </Col>
           <Col span={8}>
             <Input
-              placeholder="请输入关键词"
+              placeholder="请输入关键词吧~"
               size="large"
               value={this.state.value}
               onChange={this.onChange.bind(this)}
